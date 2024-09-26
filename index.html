@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradingView Chart with Customizable Pairs and Timeframes</title>
+    <title>TradingView Chart with Indicator Link</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,20 @@
         #tradingview_chart {
             height: 600px;
         }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button-container a:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -32,6 +46,7 @@
 <div class="container">
     <h1>График с индикатором от TradingView</h1>
 
+    <!-- Форма для выбора пары и таймфрейма -->
     <form id="tradingviewForm">
         <div>
             <label for="symbol">Выберите торговую пару:</label>
@@ -55,8 +70,16 @@
         <button type="submit">Показать график</button>
     </form>
 
+    <!-- Контейнер для виджета TradingView -->
     <div class="tradingview-widget-container">
         <div id="tradingview_chart"></div>
+    </div>
+
+    <!-- Кнопка-ссылка на индикатор TradingView -->
+    <div class="button-container">
+        <a href="https://www.tradingview.com/script/YOUR_INDICATOR_ID/" target="_blank">
+            Посмотреть и использовать наш индикатор на TradingView
+        </a>
     </div>
 </div>
 
@@ -77,14 +100,14 @@
             "hide_side_toolbar": false,
             "allow_symbol_change": true,
             "save_image": false,
-            "studies": ["RSI@tv-basicstudies"],  // Индикатор RSI (можно добавить другие)
+            "studies": [],  // Добавить индикаторы можно здесь, если нужно
             "show_popup_button": true,
             "popup_width": "1000",
             "popup_height": "650"
         });
     }
 
-    // При загрузке страницы показываем начальный график
+    // Показать начальный график при загрузке страницы
     loadTradingViewChart("BINANCE:BTCUSDT", "D");
 
     // Обработчик формы для обновления графика по выбору пользователя
